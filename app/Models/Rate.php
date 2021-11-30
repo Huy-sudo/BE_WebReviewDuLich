@@ -22,6 +22,16 @@ class Rate extends Model
         'updated_at'
     ];
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'ID', 'ID_user');
+    }
+
+    public function review()
+    {
+        return $this->hasMany(Review::class, 'ID', 'ID_review');
+    }
+
     public function Search(array $request){
 
         $model = $this;

@@ -18,6 +18,7 @@ class CreateReviews extends Migration
             $table->tinyInteger('ID_city');
             $table->tinyInteger('ID_place');
             $table->tinyInteger('ID_user');
+            $table->tinyInteger('ID_comment');
             $table->date('date');
             $table->tinyInteger('rate');
             $table->longText('content');

@@ -20,6 +20,7 @@ class Review extends Model
         'ID_user',
         'ID_place',
         'ID_city',
+        'ID_comment',
         'date',
         'content',
         'status',
@@ -46,6 +47,11 @@ class Review extends Model
     public function rate()
     {
         return $this->hasMany(Rate::class, 'ID_review', 'ID');
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Rate::class, 'ID', 'ID_comment');
     }
 
     public function Search(array $request){

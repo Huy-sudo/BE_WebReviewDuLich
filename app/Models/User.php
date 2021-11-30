@@ -163,8 +163,6 @@ class User extends Authenticatable
             $arrayInput['isAdmin'] =$request['isAdmin'];
         }
 
-
-
         $this->update($arrayInput);
         
         return $this;

@@ -62,6 +62,13 @@ Route::group(['middleware' => 'auth:api','prefix'=>'review'], function () {
     Route::delete('/{id}','reviewController@delete');
 });
 
+Route::group(['middleware' => 'auth:api','prefix'=>'user'], function () {
+    Route::get('/','userController@index');
+    Route::get('/{id}','userController@detail');
+    Route::put('/{id}','userController@update');
+    Route::delete('/{id}','userController@delete');
+});
+
 Route::group([
     'prefix' => 'auth'
 ], function () {
