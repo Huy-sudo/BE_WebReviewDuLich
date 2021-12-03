@@ -22,29 +22,29 @@ class userController extends Controller
 
     }
 
-    // public function create(Request $request)
-    // {
-    //     $request->validate([
-    //         'name'=>'required|string',
-    //         'population'=>'required|integer',
-    //         'area'=>'required|integer',
-    //     ]);
+    public function create(Request $request)
+    {
+        $request->validate([
+            'name'=>'required|string',
+            'password'=>'required|integer',
+            'email'=>'required|string'
+        ]);
 
-    //     $arrayInput = $request->all();
+        $arrayInput = $request->all();
 
-    //     $model = new User;
+        $model = new User;
             
-    //     $results = $model->createv2($arrayInput);
+        $results = $model->createv2($arrayInput);
 
-    //     $return = [
-    //         'status' => '1',
-    //         'code' => '200',
-    //     ];
+        $return = [
+            'status' => '1',
+            'code' => '200',
+        ];
 
-    //     $return['data'] = $results;
+        $return['data'] = $results;
 
-    //     return response()->json($return);
-    // }
+        return response()->json($return);
+    }
 
     public function detail(Request $request, $id)
     {

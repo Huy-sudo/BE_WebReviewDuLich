@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return [
-//         'status' => '1',
-//         'code' => '200',
-//         'data' =>  $request->user()
-//     ];
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return [
+        'status' => '1',
+        'code' => '200',
+        'data' =>  $request->user()
+    ];
+});
 
 Route::group(['middleware' => 'auth:api','prefix'=>'city'], function () {
     Route::get('/','cityController@index');

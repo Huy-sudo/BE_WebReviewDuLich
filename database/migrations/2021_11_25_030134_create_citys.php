@@ -18,7 +18,7 @@ class CreateCitys extends Migration
             $table->string('name');
             $table->bigInteger('population')->nullable();
             $table->bigInteger('area')->nullable()->comment('(m2');
-            $table->string('content')->nullable();
+            $table->longText('content')->nullable();
             $table->string('picture')->nullable();
             $table->boolean('status')->default(1)->comment('0-deleted;1-active');
             $table->timestamps();

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\City;
+use App\Models\Review;
 
 class Place extends Model
 {
@@ -17,6 +18,7 @@ class Place extends Model
         'name',
         'ID_city',
         'address',
+        'totalReview',
         'isReal',
         'picture',
         'created_at',
@@ -26,6 +28,11 @@ class Place extends Model
     protected function city()
     {
         return $this->hasOne(City::class, 'ID', 'ID_city');
+    }
+
+    protected function review()
+    {
+        return $this->hasMany(Review::class,'ID_place','ID');
     }
 
     public function Search(array $request){
@@ -52,9 +59,13 @@ class Place extends Model
             $model = $model->where('address','LIKE','%'.$request['address'].'%');
         }
 
-        $sorted = $model->orderBy('created_at', 'desc');
+        $review = Review::where('ID_place',$model['ID'])->get()->count();
 
-        $results = $sorted->get();
+        $model['totalReview'] = $review;
+
+        $results = $model->orderBy('totalReview', 'desc')->get()->with('city');
+
+        dd($model);
 
         return $results;
     }

@@ -17,9 +17,11 @@ class CreatePlaces extends Migration
             $table->id('ID');
             $table->string('name');
             $table->tinyInteger('ID_city');
+            $table->longText('content')->nullable();
             $table->string('address')->nullable();
             $table->string('picture')->nullable();
-            $table->boolean('isReal')->comment('0-unreal;1-real;2-delete')->default(0);
+            $table->unsignedInteger('totalReview')->nullable();
+            $table->tinyInteger('isReal')->comment('0-unreal;1-real;2-delete')->default(0);
             $table->timestamps();
         });
     }

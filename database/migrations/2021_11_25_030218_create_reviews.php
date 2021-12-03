@@ -18,11 +18,10 @@ class CreateReviews extends Migration
             $table->tinyInteger('ID_city');
             $table->tinyInteger('ID_place');
             $table->tinyInteger('ID_user');
-            $table->tinyInteger('ID_comment');
-            $table->date('date');
             $table->tinyInteger('rate');
+            $table->string('picture')->nullable();
             $table->longText('content');
-            $table->boolean('status')->comment('0-deleted;1-publish;2-unpublish')->default(0);
+            $table->tinyInteger('status')->comment('0-deleted;1-publish;2-unpublish')->default(0);
             $table->tinyInteger('views')->default(0);
             $table->timestamps();
         });

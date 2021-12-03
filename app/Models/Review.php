@@ -20,8 +20,6 @@ class Review extends Model
         'ID_user',
         'ID_place',
         'ID_city',
-        'ID_comment',
-        'date',
         'content',
         'status',
         'views',
@@ -51,7 +49,7 @@ class Review extends Model
 
     public function comment()
     {
-        return $this->hasMany(Rate::class, 'ID', 'ID_comment');
+        return $this->hasMany(Rate::class, 'ID_review', 'ID');
     }
 
     public function Search(array $request){
@@ -70,10 +68,6 @@ class Review extends Model
             $model = $model->where('ID_user',$request['ID_user']);
         }
 
-        if(isset($request['date']) && $request['date']){
-            $model = $model->where('date',$request['date']);
-        }
-
         if(isset($request['content']) && $request['content']){
             $model = $model->where('content','LIKE','%'.$request['content'].'%');
         }
@@ -88,7 +82,7 @@ class Review extends Model
 
         $sorted = $model->orderBy('created_at', 'desc');
 
-        $results = $sorted->get();
+        $results = $sorted->get()->with('city')->with('place')->with('user');
 
         return $results;
     }

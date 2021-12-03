@@ -17,8 +17,8 @@ class CreateComments extends Migration
             $table->id('ID');
             $table->tinyInteger('ID_user');
             $table->tinyInteger('ID_review');
-            $table->string('content');
-            $table->boolean('status')->default(1)->comment('0-deleted;1-active');
+            $table->longText('content');
+            $table->tinyInteger('status')->default(1)->comment('0-deleted;1-active');
             $table->timestamps();
         });
     }
