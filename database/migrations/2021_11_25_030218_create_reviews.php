@@ -15,6 +15,7 @@ class CreateReviews extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id('ID');
+            $table->string('name');
             $table->tinyInteger('ID_city');
             $table->tinyInteger('ID_place');
             $table->tinyInteger('ID_user');

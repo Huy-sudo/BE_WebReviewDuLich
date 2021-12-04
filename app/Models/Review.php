@@ -17,6 +17,7 @@ class Review extends Model
 
     protected $fillable = [
         'ID',
+        'name',
         'ID_user',
         'ID_place',
         'ID_city',
@@ -80,6 +81,10 @@ class Review extends Model
             $model = $model->where('ID_place',$request['ID_place']);
         }
 
+        if(isset($request['name']) && $request['name']){
+            $model = $model->where('name',$request['name']);
+        }
+
         $sorted = $model->orderBy('created_at', 'desc');
 
         $results = $sorted->get()->with('city')->with('place')->with('user');
@@ -127,6 +132,10 @@ class Review extends Model
         
         if(isset($request['status']) && $request['status']){
             $arrayInput['status'] =$request['status'];
+        }
+
+        if(isset($request['name']) && $request['name']){
+            $arrayInput['name'] =$request['name'];
         }
 
         if(isset($request['ID_user']) && $request['ID_user']){
