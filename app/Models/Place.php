@@ -59,15 +59,7 @@ class Place extends Model
             $model = $model->where('address','LIKE','%'.$request['address'].'%');
         }
 
-        $review = Review::where('ID_place',$model['ID'])->get()->count();
-
-        $model['totalReview'] = $review;
-
-        $results = $model->orderBy('totalReview', 'desc')->get()->with('city');
-
-        dd($model);
-
-        return $results;
+        return $model->orderBy('totalReview','desc')->get();
     }
 
     public function createv2(Array $request)
