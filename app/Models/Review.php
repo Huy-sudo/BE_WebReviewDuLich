@@ -112,7 +112,7 @@ class Review extends Model
         
         $Review = Review::where('ID', $id)->first();
 
-        return $Review;
+        return $Review->with('city')->with('user')->with('place');
     }
 
     public function deletev2($id)

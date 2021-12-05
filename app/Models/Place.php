@@ -59,7 +59,7 @@ class Place extends Model
             $model = $model->where('address','LIKE','%'.$request['address'].'%');
         }
 
-        return $model->orderBy('totalReview','desc')->get();
+        return $model->orderBy('totalReview','desc')->with('city')->get();
     }
 
     public function createv2(Array $request)
