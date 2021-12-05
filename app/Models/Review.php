@@ -87,7 +87,7 @@ class Review extends Model
 
         $sorted = $model->orderBy('created_at', 'desc');
 
-        $results = $sorted->get();
+        $results = $sorted->with('city')->with('user')->with('place')->get();
 
         return $results;
     }
