@@ -23,7 +23,7 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-        'ID',
+        'id',
         'name',
         'email',
         'password',
@@ -39,12 +39,12 @@ class User extends Authenticatable
 
     public function review()
     {
-        return $this->hasMany(Review::class, 'ID_user', 'ID');
+        return $this->hasMany(Review::class, 'ID_user', 'id');
     }
 
     public function rate()
     {
-        return $this->hasMany(Review::class, 'ID_user', 'ID');
+        return $this->hasMany(Rate::class, 'ID_user', 'id');
     }
 
     /**

@@ -24,7 +24,7 @@ class Rate extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'ID', 'ID_user');
+        return $this->hasOne(User::class, 'id', 'ID_user');
     }
 
     public function review()
