@@ -30,7 +30,6 @@ class City extends Model
     public function place()
     {
         return $this->hasMany(Place::class, 'ID_city', 'ID');
-
     }
 
     public function review()

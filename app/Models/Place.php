@@ -25,14 +25,14 @@ class Place extends Model
         'updated_at'
     ];
 
-    protected function city()
-    {
-        return $this->hasOne(City::class, 'ID', 'ID_city');
-    }
-
-    protected function review()
+    public function review()
     {
         return $this->hasMany(Review::class,'ID_place','ID');
+    }
+
+    public function city()
+    {
+        return $this->hasOne(City::class,'ID','ID_city');
     }
 
     public function Search(array $request){
@@ -59,7 +59,11 @@ class Place extends Model
             $model = $model->where('address','LIKE','%'.$request['address'].'%');
         }
 
-        return $model->orderBy('totalReview','desc')->with('city')->get();
+        $sorted = $model->orderBy('totalReview','desc');
+
+        $result = $sorted->with('city')->get();
+
+        return $result;
     }
 
     public function createv2(Array $request)
