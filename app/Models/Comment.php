@@ -26,7 +26,7 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'ID', 'ID_user');
+        return $this->hasOne(User::class, 'id', 'ID_user');
     }
 
     public function review()
@@ -60,7 +60,7 @@ class Comment extends Model
 
         $sorted = $model->orderBy('created_at', 'desc');
 
-        $results = $sorted->get();
+        $results = $sorted->with('user')->get();
 
         return $results;
     }

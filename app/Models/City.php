@@ -132,9 +132,10 @@ class City extends Model
             $arrayInput['content'] =$request['content'];
         }
 
-        $result = $city->update($arrayInput);
-        
-        return $result;
+
+        $city->update($arrayInput);
+
+        return $city;
     }
 
 }
