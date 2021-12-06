@@ -51,10 +51,10 @@ class reviewController extends Controller
 
     public function detail(Request $request, $id)
     {
-        $model = new Review;
+        $model = new Review();
 
         $Review =  $model->detail($id);
-
+        
         $return = [
             'status' => '1',
             'code' => '200',

@@ -105,10 +105,13 @@ class City extends Model
         return $City;
     }
 
-    public function updatev2(Array $request)
+    public function updatev2(Array $request, $id)
     {
 
         $arrayInput = [];
+
+        $city = City::where('ID', $id)->first();
+
         if(isset($request['status']) && $request['status']){
             $arrayInput['status'] =$request['status'];
         }
@@ -129,9 +132,9 @@ class City extends Model
             $arrayInput['content'] =$request['content'];
         }
 
-        $this->update($arrayInput);
+        $result = $city->update($arrayInput);
         
-        return $this;
+        return $result;
     }
 
 }

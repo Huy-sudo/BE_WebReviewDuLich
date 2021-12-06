@@ -81,11 +81,12 @@ class cityController extends Controller
 
         $arrayInput = $request->all();
 
-        $model = City::where('ID',$id)->first();
+        $model = new City();
 
         $City = $model->updatev2($arrayInput, $id);
        
         $return = [
+            'status' => '1',
             'code' => '200',
             'data' => $City
         ];
