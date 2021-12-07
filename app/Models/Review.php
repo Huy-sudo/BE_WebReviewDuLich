@@ -125,7 +125,7 @@ class Review extends Model
         return $Review;
     }
 
-    public function updatev2(Array $request)
+    public function updatev2(Array $request, $id)
     {
 
         $arrayInput = [];
@@ -158,6 +158,7 @@ class Review extends Model
             $arrayInput['ID_city'] =$request['ID_city'];
         }
 
+        $review = Review::where('ID', $id)->update($arrayInput);
 
         $this->update($arrayInput);
         

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\City;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -78,13 +79,12 @@ class cityController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $arrayInput = $request->all();
 
         $model = new City();
 
         $City = $model->updatev2($arrayInput, $id);
-       
+
         $return = [
             'status' => '1',
             'code' => '200',

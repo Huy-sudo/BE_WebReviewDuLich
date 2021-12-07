@@ -29,7 +29,6 @@ class reviewController extends Controller
             'ID_user'=>'required|integer',
             'ID_review'=>'required|integer',
             'ID_place'=>'required|integer',
-            'date'=>'required|date',
             'content'=>'required|string'
         ]);
 
@@ -83,7 +82,7 @@ class reviewController extends Controller
 
         $arrayInput = $request->all();
 
-        $model = Review::where('ID',$id)->first();
+        $model = new Review();
 
         $Review = $model->updatev2($arrayInput, $id);
        

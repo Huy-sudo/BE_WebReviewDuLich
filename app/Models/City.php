@@ -98,9 +98,7 @@ class City extends Model
     public function deletev2($id)
     {
         
-        $City = City::where('ID', $id)->first();
-
-        $City->update(['status'=>'0']);
+        $City = City::where('ID', $id)->update(['status'=>'0']);
 
         return $City;
     }
@@ -110,7 +108,6 @@ class City extends Model
 
         $arrayInput = [];
 
-        $city = City::where('ID', $id)->first();
 
         if(isset($request['status']) && $request['status']){
             $arrayInput['status'] =$request['status'];
@@ -132,8 +129,7 @@ class City extends Model
             $arrayInput['content'] =$request['content'];
         }
 
-
-        $city->update($arrayInput);
+        $city = City::where('ID', $id)->update($arrayInput);
 
         return $city;
     }
