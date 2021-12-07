@@ -87,6 +87,7 @@ class reviewController extends Controller
         $Review = $model->updatev2($arrayInput, $id);
        
         $return = [
+            'status' => '1',
             'code' => '200',
             'data' => $Review
         ];

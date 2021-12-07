@@ -159,9 +159,7 @@ class Review extends Model
         }
 
         $review = Review::where('ID', $id)->update($arrayInput);
-
-        $this->update($arrayInput);
         
-        return $this;
+        return $review;
     }
 }

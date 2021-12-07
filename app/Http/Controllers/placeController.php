@@ -79,11 +79,12 @@ class placeController extends Controller
 
         $arrayInput = $request->all();
 
-        $model = Place::where('ID',$id)->first();
+        $model = new Place();
 
         $Place = $model->updatev2($arrayInput, $id);
        
         $return = [
+            'status' => '1',
             'code' => '200',
             'data' => $Place
         ];

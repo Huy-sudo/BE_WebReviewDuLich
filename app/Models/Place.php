@@ -99,7 +99,7 @@ class Place extends Model
         return $Place;
     }
 
-    public function updatev2(Array $request)
+    public function updatev2(Array $request, $id)
     {
 
         $arrayInput = [];
@@ -119,8 +119,8 @@ class Place extends Model
             $arrayInput['address'] =$request['address'];
         }
 
-        $this->update($arrayInput);
+        $place = Place::where('ID', $id)->update($arrayInput);
         
-        return $this;
+        return $place;
     }
 }

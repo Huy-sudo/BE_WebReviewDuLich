@@ -131,6 +131,7 @@ class User extends Authenticatable
         
         $User = User::where('ID', $id)->first();
 
+        $User->update(['status'=>'0']);
         return $User;
     }
 
