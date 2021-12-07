@@ -27,7 +27,6 @@ class reviewController extends Controller
     {
         $request->validate([
             'ID_user'=>'required|integer',
-            'ID_review'=>'required|integer',
             'ID_place'=>'required|integer',
             'content'=>'required|string'
         ]);
